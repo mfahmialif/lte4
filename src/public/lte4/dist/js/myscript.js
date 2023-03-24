@@ -67,16 +67,4 @@ function logout(event) {
     if (confirm("Apa kamu yakin ? ")) {
         document.getElementById('logout-form').submit();
     }
-    // swal({
-    //     title: "Apa kamu yakin ?",
-    //     icon: "warning",
-    //     buttons: true,
-    //     dangerMode: true,
-    // })
-    //     .then((willLogout) => {
-    //         if (willLogout) {
-    //             document.getElementById('logout-form').submit();
-    //         }
-    //     });
-
 }
