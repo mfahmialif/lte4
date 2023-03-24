@@ -1,0 +1,24 @@
+{
+    "name": "mfahmialif/lte4",
+    "description": "Generate admin lte directly to your Laravel Apps, updated version from my previous repository with profil and dashboard bundle",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Mfahmialif\\Lte4\\": "src/"
+        }
+    },
+    "authors": [{
+        "name": "mfahmialif",
+        "email": "mfahmialif@gmail.com"
+    }],
+    "minimum-stability": "dev",
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Mfahmialif\\Lte4\\LTEServiceProvider"
+            ]
+        }
+    }
+}
