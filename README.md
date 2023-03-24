@@ -4,7 +4,7 @@ Starter pack for Admin LTE 4 Laravel 8 (Dashboard and profil deployed). Enjoy.
 ## Installation
 ```
 Install laravel UI => https://github.com/laravel/ui
-``
+```
 Then 
 
 ```
