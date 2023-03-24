@@ -30,7 +30,7 @@ class ProfilController extends Controller
                 'password' => 'nullable',
                 'konfirmasi_password' => 'nullable',
             ]);
-    
+
             if (isset($dataValidated['password'])) {
                 // Update dengan Password
                 if ($dataValidated['password'] == $dataValidated['konfirmasi_password']) {
@@ -41,17 +41,17 @@ class ProfilController extends Controller
                         'password' => Hash::make($dataValidated['password']),
                     ]);
                     return redirect()->route('admin.profil')->with('message', 'Berhasil Mengupdate Profile');
-                }else{
+                } else {
                     return redirect()->route('admin.profil')->with('failed', 'Gagal Mengupdate Profile Error Password');
                 }
-            } else{
+            } else {
                 // Update tanpa Password
                 $user = User::find(auth()->user()->id);
-                    $user->update([
-                        'nama' => $dataValidated['nama'],
-                        'email' => $dataValidated['email'],
-                    ]);
-                    return redirect()->route('admin.profil')->with('message', 'Berhasil Mengupdate Profile');
+                $user->update([
+                    'nama' => $dataValidated['nama'],
+                    'email' => $dataValidated['email'],
+                ]);
+                return redirect()->route('admin.profil')->with('message', 'Berhasil Mengupdate Profile');
             }
         } catch (\Throwable $th) {
             return redirect()->route('admin.profil')->with('failed', 'Gagal Mengupdate Profile Error Password' . $th->getMessage());
@@ -64,9 +64,9 @@ class ProfilController extends Controller
         return view('admin/profil/upload', compact('foto'));
     }
 
-    function crop(Request $request)
+    public function crop(Request $request)
     {
-        $lokasi = '/admin/foto/';
+        $lokasi = '/lte4/foto/';
         $foto = $request->file('foto');
         $extensi = $request->file('foto')->extension();
         $new_image_name = 'Foto' . date('YmdHis') . uniqid() . '.' . $extensi;
@@ -75,14 +75,14 @@ class ProfilController extends Controller
         if ($upload) {
             $foto = auth()->user()->foto;
             if ($foto != null) {
-                File::delete(public_path('/admin/foto/' . $foto));
+                File::delete(public_path('/lte4/foto/' . $foto));
             }
             // update new foto
             User::where('id', auth()->user()->id)->update(['foto' => $new_image_name]);
 
             return response()->json([
                 'status' => 1, 'msg' => 'Berhasil upload foto',
-                'name' => $new_image_name
+                'name' => $new_image_name,
             ]);
         } else {
             return response()->json(['status' => 0, 'msg' => 'Gagal Upload']);

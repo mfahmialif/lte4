@@ -2,10 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Services\BulkData;
-use App\Http\Services\Mahasiswa;
-use App\Models\MhsDispensasi;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -26,6 +22,6 @@ class HomeController extends Controller
 
     public function root()
     {
-        return view('index');
+        return view('welcome');
     }
 }
